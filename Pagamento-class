@@ -1,0 +1,72 @@
+public class pagamento{
+   //atributos
+   private int cartaod;
+   private int cartaoc;
+   private int pix;
+   private int ted;
+   private int boleto;
+  
+    
+    //construtores
+    public pagamento(){
+        
+    }
+    
+    public pagamento(int cartaod, int cartaoc, int pix, int boleto, int ted,int  pix){
+        this.cartaoc = cartaoc;
+        this.cartaod = cartaod;
+        this.pix = pix;
+        this.ted = ted;
+        this.boleto = boleto;
+      
+    }    
+    
+  //getters & setters
+   
+    public cartaoc getcartaoc(){
+        return cartaoc;
+    }
+    
+    public void setcartaoc(int cartaoc){
+        this.cartaoc = cartaoc;
+    }
+    
+
+ public cartaod getcartaod(){
+        return cartaod;
+    }
+    
+    public void setcartaod(int cartaod){
+        this.cartaod = cartaod;
+
+    }
+
+
+ public pix getpix(){
+        return pix;
+    }
+    
+    public void setpix(int pix){
+        this.pix = pix;
+
+    }
+    
+    public ted getted(){
+        return ted;
+    }
+    
+    public void setted(int ted){
+        this.ted = ted;
+
+    }
+    
+    public boleto getboleto(){
+        return boleto;
+    }
+    
+    public void setboleto(int boleto){
+        this.boleto = boleto;
+
+    }
+
+}
