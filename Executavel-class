@@ -1,0 +1,148 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import Model.Filme;
+import Model.Pagamento;
+import Model.Usuario;
+
+public class Exec {
+	public static void main(String[] args) {
+		ArrayList<Filme> listaFilme = new ArrayList();
+		ArrayList<Usuario> listaUsuario = new ArrayList();
+		
+		Filme filme1 = new Filme("De Volta para o Futuro", 1985, "Robert", "Aventura");
+		Filme filme2 = new Filme("Godzilla vs Kong", 2021, "Adam Wingard ", "Ação");
+		Filme filme3 = new Filme("Invocação do Mal 3", 2021, "Michael Chaves", "Terror");
+		listaFilme.add(filme1);
+		listaFilme.add(filme2);
+		listaFilme.add(filme3);
+		
+		//usuario
+		Usuario user1 = new Usuario("joao", true, filme1);
+		Usuario user2 = new Usuario("levi", false, filme2);
+		Usuario user3 = new Usuario("ivo", true, filme1);
+		Usuario user4 = new Usuario("levif", true, filme3);
+		listaUsuario.add(user1);
+		listaUsuario.add(user2);
+		listaUsuario.add(user3);
+		listaUsuario.add(user4);
+		
+		for(Filme filme: listaFilme) {
+			System.out.println(filme.toString());
+		}
+		System.out.println("Opções: ");
+		System.out.println("1: titulo");
+		System.out.println("2: Ano");
+		System.out.println("3: Diretor");
+		
+		// permite o usuario digitar
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Digite a opção que você deseja pesquisar: ");
+		// nextLine(): permite que o usuario digite string
+		String op = sc.nextLine();
+	    
+		switch (op) {
+		case "1":
+			System.out.println("Digite o nome do titulo do filme: ");
+			String titulo = sc.nextLine();
+			
+			for(Filme listFilme: listaFilme) {
+				if(titulo.equals(listFilme.getTitulo())) {
+					System.out.println(listFilme);
+				}
+			}
+			break;
+			
+		case "2":
+			System.out.println("Digite o ano de lançamento do filme: ");
+			int ano = sc.nextInt();
+			
+			for(Filme listFilme: listaFilme) {
+				if(ano == listFilme.getAno()) {
+					System.out.println(listFilme);
+				}
+			}
+			break;
+			
+		case "3":
+			System.out.println("Digite o nome do diretor do filme: ");
+			int ano = sc.nextInt();
+			
+			for(Filme listFilme: listaFilme) {
+				if(ano == listFilme.getdiretor()) {
+					System.out.println(listFilme);
+				}
+			}
+			break;
+
+		default:
+			System.out.println("Você digitou uma opção inexistente.");
+		}
+		
+		
+
+		// pagamento
+		
+		System.out.println("Digite o nome do usuario: ");
+		String nome = sc.nextLine();
+		
+		Pagamento pagamento = new Pagamento();
+		
+		for(Usuario usuario : listaUsuario) {
+			if(nome.equals(usuario.getNome())) {
+				if(usuario.isAtivo()) {
+					System.out.println("O usuário está com a mensalidade em dias.");
+				} else {
+					System.out.println("O usuário não está com o pagamento em dias. Adicione uma forma de pagamento para continuar a assistir.");
+					System.out.println("1: cartao de credito");
+					System.out.println("2: cartao de debito");
+					System.out.println("3: Boleto bancario");
+					System.out.println("4:Ted ou Pix");
+					
+					
+					
+					System.out.println("Digite a forma de pagamento que você deseja efetuar: ");
+					String opcao = sc.nextLine();
+					
+					switch (opcao) {
+					case "1":
+						System.out.println("Digite o numero do seu cartão de credito: ");
+						int cartaoC = sc.nextInt();
+						pagamento.setCartaoc(cartaoC);
+						usuario.setAtivo(true);
+						System.out.println("Pagamento efetuado!");
+						break;
+						
+					case "2":
+						System.out.println("Digite o numero do seu cartão de debito: ");
+						int cartaoD = sc.nextInt();
+						pagamento.setCartaod(cartaoD);
+						usuario.setAtivo(true);
+						System.out.println("Pagamento efetuado!");
+						break;
+						
+					case "3":
+						System.out.println("Codigo do boleto: 03399.63290 64000.000006 00125.201020 4 56140000017832, este codigo tem validade de 3 dias");
+						int boleto = sc.nextInt();
+						pagamento.setted(boleto);
+						usuario.setAtivo(true);
+						System.out.println("Pagamento efetuado!");
+						break;
+						
+					case "4":
+						System.out.println("Numero da conta para voce fazer a transferencia bancaria via pix ou ted: BD-1909");
+						int ted = sc.nextInt();
+						pagamento.setted(ted);
+						usuario.setAtivo(true);
+						System.out.println("Pagamento efetuado!");
+						break;
+
+
+					default:
+						break;
+					}
+				}
+			}
+		}
+	}
+}
